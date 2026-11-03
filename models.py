@@ -1,17 +1,31 @@
-from dataclasses import dataclass
+from abc import ABC , abstractmethod
+from dataclasses import dataclass, field
 from enums import ItemStatus
 
 @dataclass
-class Book():
-    id : int
+class LibraryItem(ABC):
+    id: int
     title : str
-    author : str
-    status : ItemStatus = ItemStatus.AVAILABLE
+    status : ItemStatus = field(default=ItemStatus.AVAILABLE, kw_only=True)
 
-    def __init(self, id : int , title : str , author : str):
-        self.id = id
-        self.title = title
-        self.author = author
+    @abstractmethod
+    def loan_days(self) -> int:
+        "На сколько дней выдаётся."
+
+
+@dataclass
+class Book(LibraryItem):
+    author : str
+
+    def loan_days(self) -> int:
+        return 14
+
+@dataclass
+class Magazine(LibraryItem):
+    issue : int
+
+    def loan_days(self):
+        return 7
 
 @dataclass
 class Reader():
