@@ -1,10 +1,10 @@
 from enum import Enum , auto
 
-class ItemStatus():
+class ItemStatus(Enum):
     AVAILABLE = auto()
     BORROWED = auto()
 
-class LoanStatus():
+class LoanStatus(Enum):
     ACTIVE = auto()
     RETURNED = auto()
     
