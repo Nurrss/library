@@ -1,9 +1,10 @@
 from abc import ABC , abstractmethod
+from mixins import JsonMixin
 from dataclasses import dataclass, field
-from enums import ItemStatus
+from enums import ItemStatus, LoanStatus
 
 @dataclass
-class LibraryItem(ABC):
+class LibraryItem(JsonMixin, ABC):
     id: int
     title : str
     status : ItemStatus = field(default=ItemStatus.AVAILABLE, kw_only=True)
@@ -28,6 +29,14 @@ class Magazine(LibraryItem):
         return 7
 
 @dataclass
-class Reader():
+class Reader(JsonMixin):
     id : int
     name : str
+
+
+@dataclass 
+class Loan:
+    item : LibraryItem
+    reader : Reader
+    due : date
+    status : LoanStatus = LoanStatus.ACTIVE

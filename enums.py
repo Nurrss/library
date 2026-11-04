@@ -7,4 +7,3 @@ class ItemStatus(Enum):
 class LoanStatus(Enum):
     ACTIVE = auto()
     RETURNED = auto()
-    

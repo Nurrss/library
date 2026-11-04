@@ -16,3 +16,7 @@ items: list[LibraryItem] = [book1, book2, mag1]
 for item in items:
     print(f"«{item.title}» выдаётся на {item.loan_days()} дней")
 
+print("--- JSON ---")
+print(book1.to_json())
+print(mag1.to_json())
+print(reader.to_json())
