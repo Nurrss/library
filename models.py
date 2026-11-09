@@ -2,6 +2,7 @@ from abc import ABC , abstractmethod
 from mixins import JsonMixin
 from dataclasses import dataclass, field
 from enums import ItemStatus, LoanStatus
+from datetime import date
 
 @dataclass
 class LibraryItem(JsonMixin, ABC):
